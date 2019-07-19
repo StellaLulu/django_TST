@@ -1,0 +1,18 @@
+{% extends "foodreview/../foodreview/../base_generic.html" %}
+
+{% block content %}
+  <h1>Restaurant List</h1>
+  {% if rest_list %}
+  <ul>
+    {% for rest in rest_list %}
+      <li>
+        <a href="{{ rest.get_absolute_url }}">{{ rest.restname }}</a> ({{rest.id}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no rests in the library.</p>
+  {% endif %}
+
+
+{% endblock %}

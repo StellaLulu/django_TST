@@ -1,0 +1,19 @@
+{% extends "foodreview/../foodreview/../base_generic.html" %}
+
+{% block content %}
+  <h1>Region: {{ region.name }}</h1>
+
+  <p><strong>{{region.restaurant_set.all.count}} Restaurants in </strong>{{ region.name }}</p> <!-- region detail link not yet defined -->
+{#  <p><strong>Summary:</strong> {{ rest.summary }}</p>#}
+{#  <p><strong>ISBN:</strong> {{ rest.isbn }}</p> #}
+{#  <p><strong>Language:</strong> {{ rest.language }}</p>  #}
+{#  <p><strong>Genre:</strong> {% for genre in rest.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  #}
+
+    <dl>
+    {% for rest in region.restaurant_set.all %}
+        <dt><a href="{% url 'rest-detail' rest.pk %}">{{rest}}</a></dt>
+        <dd>{{rest.address}}</dd>
+    {% endfor %}
+    </dl>
+
+{% endblock %}

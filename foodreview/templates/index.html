@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>TST Food Review</h1>
+  <p>Welcome to <em>TST Food Review</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The Food Review has the following record counts:</p>
+  <ul>
+    <li><strong>Restaurants:</strong> {{ num_rests }}</li>
+    <li><strong>Regions:</strong> {{ num_regions }}</li>
+    <li><strong>Reviews:</strong> {{ num_reviews }}</li>
+    <li><strong>Likes:</strong> {{ num_likes }}</li>
+  </ul>
+{% endblock %}

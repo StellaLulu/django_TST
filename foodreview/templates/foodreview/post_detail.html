@@ -1,0 +1,14 @@
+{% extends "foodreview/../foodreview/../base_generic.html" %}
+
+{% block content %}
+<div id="like-section">
+  {% include 'foodreview/rest_detail.html.html' %}
+</div>
+
+    <blockquote class="blockquote">
+    {% for review in reviews %}
+        <p class="mb-0">{{ review.content }}</p>
+        <footer class="blockquote-footer">by <cite title="Source title">{{ review.user}}</cite></footer>
+    </blockquote>
+    {% endfor %}
+{% endblock %}

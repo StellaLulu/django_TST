@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Region List</h1>
+  {% if region_list %}
+  <ul>
+    {% for reg in region_list %}
+        {% if reg.restaurant_set.all.count != 0 %}
+          <li>
+            <a href="{{ reg.get_absolute_url }}">{{ reg.name }}</a> ({{reg.restaurant_set.all.count}})
+          </li>
+        {% endif %}
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no region.</p>
+  {% endif %}       
+{% endblock %}

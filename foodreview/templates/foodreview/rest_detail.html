@@ -1,0 +1,33 @@
+{% extends "foodreview/../foodreview/../base_generic.html" %}
+
+{% block content %}
+    <h1>Name: {{ rest.restname }}</h1>
+
+    <p><strong>Address: </strong>{{ rest.address }}</p> <!-- region detail link not yet defined -->
+    <p><strong>Region: </strong> {{ rest.regionid }}</p>
+    <p><strong>Phone: </strong> {{ rest.phone }}</p>
+    <p><strong>Cuisine: </strong> {{ rest.cuisine }}</p>
+    {#  <p><strong>Genre:</strong> {% for genre in rest.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  #}
+
+    <div style="margin-left:20px;margin-top:20px">
+        <h4>Review</h4>
+        <p>No. of review: <strong>{{ rest.review_set.all.count }}</strong></p>
+        <div style="" class="button-box">
+            <button><a href="{% url 'review-create' %}">Write a review</a></button>
+        </div>
+        <hr>
+
+
+
+        {% for review in rest.review_set.all %}
+{#            <p><strong>Likes: </strong>{{ review.like_set.all.count }} | {% for like in review.like_set.all %}{{ like.user.username }}, {% endfor %}</p>#}
+            <p><strong>Likes:</strong> {{ review.likes.count }} - {% for like in review.like_set.all %}{{ like.user.username }} {% endfor %}</p>
+            <p><strong>User:</strong> {{ review.user.username }}</p>
+            <p><strong>Overall Rating:</strong> {{ review.overallRating }}</p>
+            <p><strong>Comment:</strong> {{ review.comment }}</p>
+            <p><strong>Price: $</strong> {{ review.price }}</p>
+            <p><strong>Date of Visit:</strong> {{ review.dateofvisit }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
